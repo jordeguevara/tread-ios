@@ -1,0 +1,16 @@
+query WorkoutSpecifics($workoutID: ID!) {
+  workout(id: $workoutID) {
+    id
+    name
+    exercises {
+      id
+      name
+    }
+    sets {
+      id
+      exerciseID
+      numOfReps
+      weight
+    }
+  }
+}

@@ -1,0 +1,197 @@
+"""
+The @defer directive may be specified on a fragment spread to imply de-prioritization, that causes the fragment to be omitted in the initial response, and delivered as a subsequent response afterward. A query with @defer directive will cause the request to potentially return multiple responses, where non-deferred data is delivered in the initial response and data deferred delivered in a subsequent response. @include and @skip take precedence over @defer.
+"""
+directive @defer(if: Boolean = true, label: String) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"""
+A directive used by the Apollo iOS client to annotate operations or fragments that should be used exclusively for generating local cache mutations instead of as standard operations.
+"""
+directive @apollo_client_ios_localCacheMutation on QUERY | MUTATION | SUBSCRIPTION | FRAGMENT_DEFINITION
+
+"""
+Directs the executor to defer this fragment when the `if` argument is true or undefined.
+"""
+input AddExerciseInput {
+  workoutID: ID
+  exerciseID: ID!
+}
+
+input AddExercisesInput {
+  workoutID: ID
+  exerciseIDs: [ID!]!
+}
+
+input AuthInput {
+  phoneNumber: String!
+  code: String
+}
+
+input CreateExerciseInput {
+  name: String!
+}
+
+input CreateUserInput {
+  firsName: String
+  lastName: String
+  email: String!
+  phone_number: String!
+  heightInFt: Float
+  weightInPounds: Float
+  address: String
+}
+
+input CreateWorkoutInput {
+  name: String!
+  userId: ID!
+  percentageCompleted: Float
+  userFeeling: String
+  dateTimeWorkoutStart: Time
+  dateTimeWorkoutEnd: Time
+  createdAt: Time
+  updatedAt: Time
+  exercises: [ExerciseInput!]
+}
+
+type Exercise {
+  id: ID!
+  title: String!
+  bodyPart: String
+}
+
+type ExerciseInfo {
+  id: ID
+  name: String
+}
+
+input ExerciseInput {
+  id: ID
+  name: String!
+  sets: [SetInput!]
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  updateUser(input: UpdateUserInput!): User!
+  verifySMS(input: AuthInput!): User!
+  createExercise(input: CreateExerciseInput): Exercise
+  deleteExerciseFromWorkout(id: ID!, workoutID: ID!): ID!
+  addExerciseToWorkout(input: AddExerciseInput): Exercise
+  addExercisesToWorkout(input: AddExercisesInput): [Exercise]
+  createWorkout(input: CreateWorkoutInput!): Workout
+  updateWorkout(input: UpdateWorkoutInput!): Workout
+  deleteWorkout(id: ID!): ID!
+  submitWorkoutDetail(input: WorkoutDetailInput!): WorkoutDetailResponse
+}
+
+type Query {
+  user(id: ID!): User
+  getExercises: [Exercise]
+  exercise(id: ID!): Exercise
+  workout(id: ID!): WorkoutSpecifics
+  workouts(userId: ID!): [Workout]
+}
+
+type Set {
+  id: ID!
+  reps: Int
+  previousRecord: String
+  weight: Int
+  completed: Boolean
+}
+
+type SetInfo {
+  id: ID
+  exerciseID: ID
+  numOfReps: Int
+  weight: Int
+}
+
+input SetInput {
+  id: ID
+  reps: Int!
+  weight: Float!
+  completed: Boolean
+}
+
+scalar Time
+
+input UpdateUserInput {
+  id: ID!
+  firstName: String
+  lastName: String
+  address: String
+  email: String
+  phoneNumber: String
+  HeightInFt: Float
+  weightInPounds: Float
+}
+
+input UpdateWorkoutInput {
+  id: ID
+  name: String
+  userID: ID!
+  percentageCompleted: Float
+  userFeeling: String
+  dateTimeWorkoutStart: Time
+  dateTimeWorkoutEnd: Time
+  createdAt: Time
+  updatedAt: Time
+  exercises: [ExerciseInput!]
+}
+
+type User {
+  id: ID!
+  firstName: String
+  lastName: String
+  email: String!
+  createdAt: Time!
+  updatedAt: Time
+  address: String
+  phoneNumber: String!
+  heightInFt: Float
+  weightInPounds: Float
+}
+
+type Workout {
+  id: ID
+  name: String
+  createTime: Time
+  updateTime: Time
+  userId: ID
+  percentageCompleted: Float
+  userFeeling: String
+  dateTimeWorkoutStart: Time
+  dateTimeWorkoutEnd: Time
+  createdAt: Time
+  updatedAt: Time
+}
+
+type WorkoutDetail {
+  id: ID!
+  exercises: [Exercise!]
+  workoutStart: String
+  workoutEnd: String
+  workoutDuration: Int
+}
+
+input WorkoutDetailInput {
+  exercises: [ExerciseInput!]
+  workoutStart: String
+  workoutEnd: String
+  workoutDuration: Int
+}
+
+type WorkoutDetailResponse {
+  success: Boolean!
+  message: String
+  workoutDetail: WorkoutDetail
+}
+
+type WorkoutSpecifics {
+  id: ID
+  name: String
+  userId: ID
+  createdAt: Time
+  exercises: [ExerciseInfo]
+  sets: [SetInfo]
+}

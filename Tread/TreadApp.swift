@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct TreadApp: App {
+    @State private var showModal = true  // Dummy state to control modal visibility
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ExerciseModalView(
+                showModal: $showModal, // ✅ Binding to toggle modal
+                addExercise: { exercise in
+                    print("Dummy addExercise called with: \(exercise)")
+                },
+                existingExercises: []
+            )
         }
     }
 }

@@ -1,0 +1,5 @@
+mutation AddExercise($addExerciseInput: AddExerciseInput){
+  addExerciseToWorkout(input:$addExerciseInput){
+    title
+  }
+}

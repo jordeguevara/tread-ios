@@ -1,0 +1,6 @@
+  query Workout($userID: ID!) {
+    workouts(userId: $userID) {
+      name
+      id
+    }
+  }

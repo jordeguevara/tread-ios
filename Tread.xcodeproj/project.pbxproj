@@ -3,17 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		353B63792D5A7ADB0027774A /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B63782D5A7ADB0027774A /* Client.swift */; };
+		353B638F2D5A85EF0027774A /* WorkoutDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B638E2D5A85EF0027774A /* WorkoutDetails.swift */; };
+		353B63932D5A88CF0027774A /* SetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B63922D5A88CF0027774A /* SetDetail.swift */; };
+		353B63B12D5ABEA30027774A /* ExercisesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B63B02D5ABEA30027774A /* ExercisesModal.swift */; };
+		353B63EF2D5B2BB60027774A /* WorkoutStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B63EE2D5B2BB60027774A /* WorkoutStore.swift */; };
+		353B63F12D60D5700027774A /* addExerciseToWorkout.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 353B63F02D60D5600027774A /* addExerciseToWorkout.graphql */; };
+		353B64212D60DC810027774A /* Tread.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B64202D60DC810027774A /* Tread.graphql.swift */; };
 		356D94D22D596F2000F3D0C6 /* TreadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356D94D12D596F2000F3D0C6 /* TreadApp.swift */; };
-		356D94D42D596F2000F3D0C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356D94D32D596F2000F3D0C6 /* ContentView.swift */; };
 		356D94D62D596F2100F3D0C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356D94D52D596F2100F3D0C6 /* Assets.xcassets */; };
 		356D94DA2D596F2100F3D0C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356D94D92D596F2100F3D0C6 /* Preview Assets.xcassets */; };
 		356D94E42D596F2100F3D0C6 /* TreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356D94E32D596F2100F3D0C6 /* TreadTests.swift */; };
 		356D94EE2D596F2100F3D0C6 /* TreadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356D94ED2D596F2100F3D0C6 /* TreadUITests.swift */; };
 		356D94F02D596F2100F3D0C6 /* TreadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356D94EF2D596F2100F3D0C6 /* TreadUITestsLaunchTests.swift */; };
+		356D94FD2D59715800F3D0C6 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356D94FC2D59715800F3D0C6 /* OTPView.swift */; };
+		356D94FF2D59724100F3D0C6 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356D94FE2D59724100F3D0C6 /* Login.swift */; };
+		356D95012D5972D700F3D0C6 /* WorkoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356D95002D5972D700F3D0C6 /* WorkoutsView.swift */; };
+		356D95052D5973B300F3D0C6 /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356D95042D5973B300F3D0C6 /* WorkoutViewModel.swift */; };
+		356D950F2D59782D00F3D0C6 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 356D950E2D59782D00F3D0C6 /* Apollo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +45,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		353B63782D5A7ADB0027774A /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		353B638E2D5A85EF0027774A /* WorkoutDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetails.swift; sourceTree = "<group>"; };
+		353B63922D5A88CF0027774A /* SetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDetail.swift; sourceTree = "<group>"; };
+		353B63B02D5ABEA30027774A /* ExercisesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesModal.swift; sourceTree = "<group>"; };
+		353B63EE2D5B2BB60027774A /* WorkoutStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStore.swift; sourceTree = "<group>"; };
+		353B63F02D60D5600027774A /* addExerciseToWorkout.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = addExerciseToWorkout.graphql; sourceTree = "<group>"; };
+		353B64202D60DC810027774A /* Tread.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tread.graphql.swift; sourceTree = "<group>"; };
 		356D94CE2D596F2000F3D0C6 /* Tread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356D94D12D596F2000F3D0C6 /* TreadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreadApp.swift; sourceTree = "<group>"; };
-		356D94D32D596F2000F3D0C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		356D94D52D596F2100F3D0C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		356D94D72D596F2100F3D0C6 /* Tread.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tread.entitlements; sourceTree = "<group>"; };
 		356D94D92D596F2100F3D0C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,13 +62,23 @@
 		356D94E92D596F2100F3D0C6 /* TreadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		356D94ED2D596F2100F3D0C6 /* TreadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreadUITests.swift; sourceTree = "<group>"; };
 		356D94EF2D596F2100F3D0C6 /* TreadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreadUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		356D94FC2D59715800F3D0C6 /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
+		356D94FE2D59724100F3D0C6 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		356D95002D5972D700F3D0C6 /* WorkoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsView.swift; sourceTree = "<group>"; };
+		356D95042D5973B300F3D0C6 /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		353B64282D60DD4F0027774A /* Operations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); name = Operations; path = Tread/Operations; sourceTree = "<group>"; };
+		353B64352D60DD4F0027774A /* Schema */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); name = Schema; path = Tread/Schema; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		356D94CB2D596F2000F3D0C6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				356D950F2D59782D00F3D0C6 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +106,8 @@
 				356D94E22D596F2100F3D0C6 /* TreadTests */,
 				356D94EC2D596F2100F3D0C6 /* TreadUITests */,
 				356D94CF2D596F2000F3D0C6 /* Products */,
+				353B64282D60DD4F0027774A /* Operations */,
+				353B64352D60DD4F0027774A /* Schema */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,11 +124,21 @@
 		356D94D02D596F2000F3D0C6 /* Tread */ = {
 			isa = PBXGroup;
 			children = (
+				353B64202D60DC810027774A /* Tread.graphql.swift */,
+				353B63F02D60D5600027774A /* addExerciseToWorkout.graphql */,
+				353B63EE2D5B2BB60027774A /* WorkoutStore.swift */,
+				353B63B02D5ABEA30027774A /* ExercisesModal.swift */,
 				356D94D12D596F2000F3D0C6 /* TreadApp.swift */,
-				356D94D32D596F2000F3D0C6 /* ContentView.swift */,
+				356D95002D5972D700F3D0C6 /* WorkoutsView.swift */,
+				356D94FE2D59724100F3D0C6 /* Login.swift */,
+				356D94FC2D59715800F3D0C6 /* OTPView.swift */,
 				356D94D52D596F2100F3D0C6 /* Assets.xcassets */,
 				356D94D72D596F2100F3D0C6 /* Tread.entitlements */,
 				356D94D82D596F2100F3D0C6 /* Preview Content */,
+				356D95042D5973B300F3D0C6 /* WorkoutViewModel.swift */,
+				353B63782D5A7ADB0027774A /* Client.swift */,
+				353B638E2D5A85EF0027774A /* WorkoutDetails.swift */,
+				353B63922D5A88CF0027774A /* SetDetail.swift */,
 			);
 			path = Tread;
 			sourceTree = "<group>";
@@ -144,7 +183,14 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				353B64282D60DD4F0027774A /* Operations */,
+				353B64352D60DD4F0027774A /* Schema */,
+			);
 			name = Tread;
+			packageProductDependencies = (
+				356D950E2D59782D00F3D0C6 /* Apollo */,
+			);
 			productName = Tread;
 			productReference = 356D94CE2D596F2000F3D0C6 /* Tread.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +263,9 @@
 				Base,
 			);
 			mainGroup = 356D94C52D596F2000F3D0C6;
+			packageReferences = (
+				356D950D2D59782D00F3D0C6 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = 356D94CF2D596F2000F3D0C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -235,6 +284,7 @@
 			files = (
 				356D94DA2D596F2100F3D0C6 /* Preview Assets.xcassets in Resources */,
 				356D94D62D596F2100F3D0C6 /* Assets.xcassets in Resources */,
+				353B63F12D60D5700027774A /* addExerciseToWorkout.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +309,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				356D94D42D596F2000F3D0C6 /* ContentView.swift in Sources */,
+				353B638F2D5A85EF0027774A /* WorkoutDetails.swift in Sources */,
 				356D94D22D596F2000F3D0C6 /* TreadApp.swift in Sources */,
+				356D94FD2D59715800F3D0C6 /* OTPView.swift in Sources */,
+				353B63EF2D5B2BB60027774A /* WorkoutStore.swift in Sources */,
+				353B63792D5A7ADB0027774A /* Client.swift in Sources */,
+				353B63B12D5ABEA30027774A /* ExercisesModal.swift in Sources */,
+				356D95012D5972D700F3D0C6 /* WorkoutsView.swift in Sources */,
+				353B63932D5A88CF0027774A /* SetDetail.swift in Sources */,
+				356D94FF2D59724100F3D0C6 /* Login.swift in Sources */,
+				356D95052D5973B300F3D0C6 /* WorkoutViewModel.swift in Sources */,
+				353B64212D60DC810027774A /* Tread.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +671,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		356D950D2D59782D00F3D0C6 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		356D950E2D59782D00F3D0C6 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 356D950D2D59782D00F3D0C6 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 356D94C62D596F2000F3D0C6 /* Project object */;
 }

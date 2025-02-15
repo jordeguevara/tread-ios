@@ -1,0 +1,6 @@
+query getEx {
+  getExercises {
+    id
+    title
+  }
+}

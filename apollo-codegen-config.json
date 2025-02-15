@@ -1,0 +1,44 @@
+{
+  "schemaNamespace" : "tread",
+"schemaDownload": {
+  "downloadMethod": {
+    "introspection": {
+      "endpointURL": "http://localhost:7777/query",
+      "httpMethod": {
+        "POST": {}
+      },
+      "includeDeprecatedInputValues": false,
+      "outputFormat": "SDL"
+    }
+  },
+  "downloadTimeout": 60,
+  "headers": [],
+  "outputPath": "./Tread/schema.graphqls"
+},
+  "input" : {
+    "operationSearchPaths" : [
+      "**/*.graphql"
+    ],
+    "schemaSearchPaths" : [
+      "**/*.graphqls"
+    ]
+  },
+  "output" : {
+    "testMocks" : {
+      "none" : {
+      }
+    },
+    "schemaTypes" : {
+      "path" : "./tread",
+      "moduleType" : {
+        "embeddedInTarget" : {
+          "name" : "Tread"
+        }
+      }
+    },
+    "operations" : {
+      "inSchemaModule" : {
+      }
+    }
+  }
+}
