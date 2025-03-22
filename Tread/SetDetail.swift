@@ -30,13 +30,17 @@ struct SetDetailView: View {
                             TextField(
                                 "Reps",
                                 text: Binding(
-                                    get: { String(exercise.sets[index].reps) },
-                                    set: { exercise.sets[index].reps = Int($0.trimmingCharacters(in: .whitespacesAndNewlines)) ?? exercise.sets[index].reps }
+                                    get: { 
+                                        exercise.sets[index].reps == 0 ? "" : String(exercise.sets[index].reps) 
+                                    },
+                                    set: { 
+                                        let newValue = Int($0.trimmingCharacters(in: .whitespacesAndNewlines)) ?? 0
+                                        exercise.sets[index].reps = newValue
+                                    }
                                 )
                             )
                             .keyboardType(.numberPad)
                             .onTapGesture {
-                                // Select all text when the TextField is tapped
                                 DispatchQueue.main.async {
                                     if let textField = UIResponder.currentFirstResponder as? UITextField {
                                         textField.selectAll(nil)
@@ -49,14 +53,18 @@ struct SetDetailView: View {
                             TextField(
                                 "Weight",
                                 text: Binding(
-                                    get: { String(exercise.sets[index].weight) },
-                                    set: { exercise.sets[index].weight = Int($0.trimmingCharacters(in: .whitespacesAndNewlines)) ?? exercise.sets[index].weight }
+                                    get: { 
+                                        exercise.sets[index].weight == 0 ? "" : String(exercise.sets[index].weight) 
+                                    },
+                                    set: { 
+                                        let newValue = Int($0.trimmingCharacters(in: .whitespacesAndNewlines)) ?? 0
+                                        exercise.sets[index].weight = newValue
+                                    }
                                 )
                             )
                             .keyboardType(.numberPad)
                             .focused($focusedField, equals: index)
                             .onTapGesture {
-                                // Select all text when the TextField is tapped
                                 DispatchQueue.main.async {
                                     if let textField = UIResponder.currentFirstResponder as? UITextField {
                                         textField.selectAll(nil)

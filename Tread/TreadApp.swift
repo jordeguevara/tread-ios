@@ -13,13 +13,14 @@ struct TreadApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ExerciseModalView(
-                showModal: $showModal, // ✅ Binding to toggle modal
-                addExercise: { exercise in
-                    print("Dummy addExercise called with: \(exercise)")
-                },
-                existingExercises: []
-            )
+            WorkoutsView()
+//            ExerciseModalView(
+//                showModal: $showModal, // ✅ Binding to toggle modal
+//                addExercise: { exercise in
+//                    print("Dummy addExercise called with: \(exercise)")
+//                },
+//                existingExercises: []
+//            )
         }
     }
 }

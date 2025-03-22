@@ -1,15 +1,9 @@
-//
-//  WorkoutsView.swift
-//  Tread
-//
-//  Created by Jorde Guevara on 2/9/25.
-//
-// WorkoutsView.swift
 import SwiftUI
 
 struct WorkoutsView: View {
     @StateObject private var viewModel = WorkoutViewModel()
-
+    @State private var isShowingWorkoutDetail = false
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -21,17 +15,29 @@ struct WorkoutsView: View {
                 } else {
                     List(viewModel.workouts) { workout in
                         NavigationLink(destination: WorkoutDetailView(workoutId: workout.id)) {
-                        Text(workout.name)
-                    }
+                            Text(workout.name)
+                        }
                     }
                 }
+                NavigationLink(destination: WorkoutDetailView(workoutId: ""), isActive: $isShowingWorkoutDetail) {
+                    Button(action: {
+                        isShowingWorkoutDetail = true
+                    }) {
+                        Text("New workout")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(8)
+                    }
+                }
+                .padding()
             }
             .navigationTitle("Workouts")
             .onAppear {
                 viewModel.fetchWorkouts()
             }
         }
-        .navigationBarHidden(true)
     }
 }
 

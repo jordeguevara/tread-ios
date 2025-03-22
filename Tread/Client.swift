@@ -8,4 +8,4 @@
 import Foundation
 import Apollo
 
-let apolloClient = ApolloClient(url: URL(string: "http://192.168.1.2:7777/query")!)
+let apolloClient = ApolloClient(url: URL(string: "http://192.168.1.248:7777/query")!)

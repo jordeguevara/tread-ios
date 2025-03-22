@@ -13,7 +13,6 @@
 		353B63B12D5ABEA30027774A /* ExercisesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B63B02D5ABEA30027774A /* ExercisesModal.swift */; };
 		353B63EF2D5B2BB60027774A /* WorkoutStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B63EE2D5B2BB60027774A /* WorkoutStore.swift */; };
 		353B63F12D60D5700027774A /* addExerciseToWorkout.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 353B63F02D60D5600027774A /* addExerciseToWorkout.graphql */; };
-		353B64212D60DC810027774A /* Tread.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B64202D60DC810027774A /* Tread.graphql.swift */; };
 		356D94D22D596F2000F3D0C6 /* TreadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356D94D12D596F2000F3D0C6 /* TreadApp.swift */; };
 		356D94D62D596F2100F3D0C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356D94D52D596F2100F3D0C6 /* Assets.xcassets */; };
 		356D94DA2D596F2100F3D0C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356D94D92D596F2100F3D0C6 /* Preview Assets.xcassets */; };
@@ -51,7 +50,6 @@
 		353B63B02D5ABEA30027774A /* ExercisesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesModal.swift; sourceTree = "<group>"; };
 		353B63EE2D5B2BB60027774A /* WorkoutStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStore.swift; sourceTree = "<group>"; };
 		353B63F02D60D5600027774A /* addExerciseToWorkout.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = addExerciseToWorkout.graphql; sourceTree = "<group>"; };
-		353B64202D60DC810027774A /* Tread.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tread.graphql.swift; sourceTree = "<group>"; };
 		356D94CE2D596F2000F3D0C6 /* Tread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356D94D12D596F2000F3D0C6 /* TreadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreadApp.swift; sourceTree = "<group>"; };
 		356D94D52D596F2100F3D0C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,8 +67,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		353B64282D60DD4F0027774A /* Operations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); name = Operations; path = Tread/Operations; sourceTree = "<group>"; };
-		353B64352D60DD4F0027774A /* Schema */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); name = Schema; path = Tread/Schema; sourceTree = "<group>"; };
+		353B64282D60DD4F0027774A /* Operations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Operations; sourceTree = "<group>"; };
+		353B64352D60DD4F0027774A /* Schema */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Schema; sourceTree = "<group>"; };
+		353B64732D60E4990027774A /* Tread */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tread; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,12 +101,11 @@
 		356D94C52D596F2000F3D0C6 = {
 			isa = PBXGroup;
 			children = (
+				353B64732D60E4990027774A /* Tread */,
 				356D94D02D596F2000F3D0C6 /* Tread */,
 				356D94E22D596F2100F3D0C6 /* TreadTests */,
 				356D94EC2D596F2100F3D0C6 /* TreadUITests */,
 				356D94CF2D596F2000F3D0C6 /* Products */,
-				353B64282D60DD4F0027774A /* Operations */,
-				353B64352D60DD4F0027774A /* Schema */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,7 +122,8 @@
 		356D94D02D596F2000F3D0C6 /* Tread */ = {
 			isa = PBXGroup;
 			children = (
-				353B64202D60DC810027774A /* Tread.graphql.swift */,
+				353B64352D60DD4F0027774A /* Schema */,
+				353B64282D60DD4F0027774A /* Operations */,
 				353B63F02D60D5600027774A /* addExerciseToWorkout.graphql */,
 				353B63EE2D5B2BB60027774A /* WorkoutStore.swift */,
 				353B63B02D5ABEA30027774A /* ExercisesModal.swift */,
@@ -186,6 +185,7 @@
 			fileSystemSynchronizedGroups = (
 				353B64282D60DD4F0027774A /* Operations */,
 				353B64352D60DD4F0027774A /* Schema */,
+				353B64732D60E4990027774A /* Tread */,
 			);
 			name = Tread;
 			packageProductDependencies = (
@@ -319,7 +319,6 @@
 				353B63932D5A88CF0027774A /* SetDetail.swift in Sources */,
 				356D94FF2D59724100F3D0C6 /* Login.swift in Sources */,
 				356D95052D5973B300F3D0C6 /* WorkoutViewModel.swift in Sources */,
-				353B64212D60DC810027774A /* Tread.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

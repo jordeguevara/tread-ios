@@ -35,8 +35,8 @@ extension Tread {
       case "WorkoutSpecifics": return Tread.Objects.WorkoutSpecifics
       case "ExerciseInfo": return Tread.Objects.ExerciseInfo
       case "SetInfo": return Tread.Objects.SetInfo
-      case "Exercise": return Tread.Objects.Exercise
       case "Mutation": return Tread.Objects.Mutation
+      case "Exercise": return Tread.Objects.Exercise
       case "Workout": return Tread.Objects.Workout
       default: return nil
       }
