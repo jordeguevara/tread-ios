@@ -1,0 +1,6 @@
+mutation createWorkout($createWorkoutInput: CreateWorkoutInput!) {
+  createWorkout(input: $createWorkoutInput) {
+    name
+    id
+  }
+}

@@ -64,8 +64,8 @@ type ExerciseInfo {
 }
 
 input ExerciseInput {
-  id: ID
-  name: String!
+  id: ID!
+  name: String
 }
 
 type Mutation {
