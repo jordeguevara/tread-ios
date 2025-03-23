@@ -8,11 +8,17 @@
 import Foundation
 import SwiftUI
 
+import ApolloAPI
+import Tread
 
 struct SetDetailView: View {
     @State var exercise: Exercise
     @FocusState private var focusedField: Int?
-
+    var workoutID: String
+        @State private var isSaving = false
+    @State private var showSaveSuccess = false
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         VStack {
             Text(exercise.name)
@@ -22,7 +28,7 @@ struct SetDetailView: View {
                 Text("Set \(index + 1)")
                     .font(.headline)
                     .padding(.bottom, 5)
-
+                
                 VStack(alignment: .leading) {
                     HStack {
                         VStack(alignment: .leading) {
@@ -30,10 +36,10 @@ struct SetDetailView: View {
                             TextField(
                                 "Reps",
                                 text: Binding(
-                                    get: { 
-                                        exercise.sets[index].reps == 0 ? "" : String(exercise.sets[index].reps) 
+                                    get: {
+                                        exercise.sets[index].reps == 0 ? "" : String(exercise.sets[index].reps)
                                     },
-                                    set: { 
+                                    set: {
                                         let newValue = Int($0.trimmingCharacters(in: .whitespacesAndNewlines)) ?? 0
                                         exercise.sets[index].reps = newValue
                                     }
@@ -53,10 +59,10 @@ struct SetDetailView: View {
                             TextField(
                                 "Weight",
                                 text: Binding(
-                                    get: { 
-                                        exercise.sets[index].weight == 0 ? "" : String(exercise.sets[index].weight) 
+                                    get: {
+                                        exercise.sets[index].weight == 0 ? "" : String(exercise.sets[index].weight)
                                     },
-                                    set: { 
+                                    set: {
                                         let newValue = Int($0.trimmingCharacters(in: .whitespacesAndNewlines)) ?? 0
                                         exercise.sets[index].weight = newValue
                                     }
@@ -76,11 +82,55 @@ struct SetDetailView: View {
                 }
                 .padding(.vertical, 5)
             }
-            Button(action: addSet) {
-                Label("Add Set", systemImage: "plus")
+
+
+                Button(action: {
+                addSet()
+            }) {
+                Label("Add Set", systemImage: "plus.circle.fill")
+                    .font(.headline)
+                    .foregroundColor(.blue)
             }
             .padding()
+            
+            HStack {
+                Button(action: {
+                    // Optionally add a confirmation dialog
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Cancel")
+                        .foregroundColor(.red)
+                }
+                .padding()
+                
+                Spacer()
+                
+                Button(action: {
+                    saveAndGoBack()
+                }) {
+                    if isSaving {
+                        ProgressView()
+                    } else {
+                        Text("Save")
+                            .bold()
+                            .foregroundColor(.white)
+                    }
+                }
+                .padding()
+                .background(Color.blue)
+                .cornerRadius(8)
+                .disabled(isSaving)
+            }
+            .padding()
+
+            
         }
+        .alert("Changes Saved", isPresented: $showSaveSuccess) {
+            Button("OK") {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
+
     }
 
     func addSet() {
@@ -92,6 +142,67 @@ struct SetDetailView: View {
         )
         exercise.sets.append(newSet)
         focusedField = exercise.sets.count - 1
+    }
+
+    // func addSetsToWorkout() {
+    //     let setsInput = Tread.SetsInput(
+    //         exerciseID: .some(exercise.id),  // Wrap String in GraphQLNullable
+    //         workoutID: .some(workoutID),     // Wrap String in GraphQLNullable
+    //         sets: exercise.sets.map { set in
+    //             Tread.SetInput(
+    //                 numberOfReps: set.reps,
+    //                 restsInSeconds: nil,
+    //                 weight: .some(set.weight)  // Wrap Int in GraphQLNullable if needed
+    //             )
+    //         }
+    //     )
+        
+
+        
+    //     let mutation = Tread.AddSetsMutation(input: setsInput)
+
+    //     apolloClient.perform(mutation: mutation) { result in
+    //         switch result {
+    //         case .success(let graphQLResult):
+    //             if let sets = graphQLResult.data?.addSets {
+    //                 print("Successfully added sets: \(sets)")
+    //             } else if let errors = graphQLResult.errors {
+    //                 print("GraphQL errors: \(errors)")
+    //             }
+    //         case .failure(let error):
+    //             print("Network error: \(error)")
+    //         }
+    //     }
+    // }
+        func saveAndGoBack() {
+        isSaving = true
+        
+        let setsInput = Tread.SetsInput(
+            exerciseID: .some(exercise.id),
+            workoutID: .some(workoutID),
+            sets: exercise.sets.map { set in
+                Tread.SetInput(
+                    numberOfReps: set.reps,
+                    restsInSeconds: nil,
+                    weight: .some(set.weight)
+                )
+            }
+        )
+        
+        let mutation = Tread.AddSetsMutation(input: setsInput)
+        
+        apolloClient.perform(mutation: mutation) { result in
+            DispatchQueue.main.async {
+                isSaving = false
+                switch result {
+                case .success(_):
+                    showSaveSuccess = true
+                case .failure(let error):
+                    print("Network error: \(error)")
+                    // Show error alert
+                }
+            }
+        }
     }
 }
 
@@ -111,6 +222,9 @@ extension UIResponder {
 
 struct SetDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SetDetailView(exercise: Exercise(id: "1", name: "Sample Exercise", sets: [Set(id: "1", reps: 10, weight: 50)]))
+        SetDetailView(
+            exercise: Exercise(id: "1", name: "Sample Exercise", sets: [Set(id: "1", reps: 10, weight: 50)]),
+            workoutID: "workout123" // Pass a sample WorkoutID here
+        )
     }
 }

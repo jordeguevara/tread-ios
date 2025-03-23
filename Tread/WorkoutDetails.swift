@@ -45,13 +45,17 @@ struct WorkoutDetailView: View {
                 Text(workout.name)
                     .font(.largeTitle)
                     .padding()
-            List(workout.exercises) { exercise in
-                NavigationLink(destination: SetDetailView(exercise: exercise)) {
-                    Text(exercise.name)
+                List(workout.exercises) { exercise in
+                    NavigationLink(destination: SetDetailView(exercise: exercise, workoutID: workout.id ?? "")) {
+                        Text(exercise.name)
+                    }
                 }
-            }
                 .listStyle(PlainListStyle())
-
+                .refreshable {
+                    if let id = workoutId, !id.isEmpty {
+                        await refreshWorkoutDetails(workoutId: id)
+                    }
+                }
        
 
            
@@ -80,12 +84,21 @@ struct WorkoutDetailView: View {
             
         }
         .onAppear {
+            workoutIdstr = workoutId  
+    //        guard let id = workoutId, !id.isEmpty else {
+    //     isLoading = false
+    //     // workoutIdstr = id 
+    //     // errorMessage = "No workout ID provided"
+    //     return
+    // }
+    // fetchWorkoutDetails(workoutId: id)
+        }
+                .task {
            guard let id = workoutId, !id.isEmpty else {
-        isLoading = false
-        // errorMessage = "No workout ID provided"
-        return
-    }
-    fetchWorkoutDetails(workoutId: id)
+                isLoading = false
+                return
+            }
+            fetchWorkoutDetails(workoutId: id)
         }
         .onChange(of: isShowingExerciseModal) { isShowing in
             if !isShowing, let id = workoutId, !id.isEmpty {
@@ -95,9 +108,16 @@ struct WorkoutDetailView: View {
         }
     }
 
+    private func refreshWorkoutDetails(workoutId: String) async {
+    return await withCheckedContinuation { continuation in
+        fetchWorkoutDetails(workoutId: workoutId)
+        continuation.resume()
+    }
+}
+
 private func fetchWorkoutDetails(workoutId: String) {
     let query = Tread.WorkoutSpecificsQuery(workoutID: workoutId)
-    apolloClient.fetch(query: query) { result in
+    apolloClient.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result in
         DispatchQueue.main.async {
             isLoading = false
             switch result {

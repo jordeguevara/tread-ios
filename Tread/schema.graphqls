@@ -66,7 +66,6 @@ type ExerciseInfo {
 input ExerciseInput {
   id: ID
   name: String!
-  sets: [SetInput!]
 }
 
 type Mutation {
@@ -77,6 +76,7 @@ type Mutation {
   deleteExerciseFromWorkout(id: ID!, workoutID: ID!): ID!
   addExerciseToWorkout(input: AddExerciseInput): Exercise
   addExercisesToWorkout(input: AddExercisesInput): [Exercise]
+  addSets(input: SetsInput): [Set!]!
   createWorkout(input: CreateWorkoutInput!): Workout
   updateWorkout(input: UpdateWorkoutInput!): Workout
   deleteWorkout(id: ID!): ID!
@@ -93,10 +93,10 @@ type Query {
 
 type Set {
   id: ID!
-  reps: Int
-  previousRecord: String
+  numberOfReps: Int!
+  restsInSeconds: Int
   weight: Int
-  completed: Boolean
+  workoutExerciseID: ID!
 }
 
 type SetInfo {
@@ -107,10 +107,15 @@ type SetInfo {
 }
 
 input SetInput {
-  id: ID
-  reps: Int!
-  weight: Float!
-  completed: Boolean
+  numberOfReps: Int!
+  restsInSeconds: Int
+  weight: Int
+}
+
+input SetsInput {
+  exerciseID: ID
+  WorkoutID: ID
+  sets: [SetInput!]!
 }
 
 scalar Time

@@ -31,11 +31,12 @@ extension Tread {
 
     static func objectType(forTypename typename: String) -> ApolloAPI.Object? {
       switch typename {
+      case "Mutation": return Tread.Objects.Mutation
+      case "Set": return Tread.Objects.Set
       case "Query": return Tread.Objects.Query
       case "WorkoutSpecifics": return Tread.Objects.WorkoutSpecifics
       case "ExerciseInfo": return Tread.Objects.ExerciseInfo
       case "SetInfo": return Tread.Objects.SetInfo
-      case "Mutation": return Tread.Objects.Mutation
       case "Exercise": return Tread.Objects.Exercise
       case "Workout": return Tread.Objects.Workout
       default: return nil

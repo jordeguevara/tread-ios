@@ -1,0 +1,8 @@
+mutation AddSets($input: SetsInput!) {
+  addSets(input: $input) {
+    id
+    numberOfReps
+    weight
+    workoutExerciseID
+  }
+}
