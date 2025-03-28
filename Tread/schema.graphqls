@@ -107,6 +107,7 @@ type SetInfo {
 }
 
 input SetInput {
+  id: ID
   numberOfReps: Int!
   restsInSeconds: Int
   weight: Int

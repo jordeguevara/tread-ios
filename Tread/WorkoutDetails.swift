@@ -34,6 +34,7 @@ struct WorkoutDetailView: View {
   @State private var isShowingExerciseModal = false
   @State var workoutIdstr: String?
   @State private var notificationObserver: NSObjectProtocol?
+  @State private var workoutDataChangedObserver: NSObjectProtocol?
 
   var body: some View {
     VStack {
@@ -98,10 +99,24 @@ struct WorkoutDetailView: View {
           self.fetchWorkoutDetails(workoutId: id)
         }
       }
+
+      workoutDataChangedObserver = NotificationCenter.default.addObserver(
+        forName: NSNotification.Name("WorkoutDataChanged"),
+        object: nil,
+        queue: .main
+      ) { _ in
+        print("Received WorkoutDataChanged notification")
+        if let id = self.workoutIdstr, !id.isEmpty {
+          self.fetchWorkoutDetails(workoutId: id)
+        }
+      }
     }
     .onDisappear {
       // Clean up the observer when the view disappears
       if let observer = notificationObserver {
+        NotificationCenter.default.removeObserver(observer)
+      }
+      if let observer = workoutDataChangedObserver {
         NotificationCenter.default.removeObserver(observer)
       }
     }

@@ -12,15 +12,22 @@ extension Tread {
     }
 
     init(
+      id: GraphQLNullable<ID> = nil,
       numberOfReps: Int,
       restsInSeconds: GraphQLNullable<Int> = nil,
       weight: GraphQLNullable<Int> = nil
     ) {
       __data = InputDict([
+        "id": id,
         "numberOfReps": numberOfReps,
         "restsInSeconds": restsInSeconds,
         "weight": weight
       ])
+    }
+
+    var id: GraphQLNullable<ID> {
+      get { __data["id"] }
+      set { __data["id"] = newValue }
     }
 
     var numberOfReps: Int {
